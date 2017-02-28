@@ -10,6 +10,8 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
+	'host': '0.0.0.0',
+
 	'name': 'VRBL',
 	'brand': 'VRBL',
 

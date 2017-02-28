@@ -855,7 +855,7 @@ body {
 	width: 100%;
 	text-align: center;
 	padding: 1em 0;
-	transition: bottom .3s;
+	transition: bottom .5s;
 }
 
 .player__play--bottom,

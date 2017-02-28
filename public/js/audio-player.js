@@ -107,11 +107,6 @@
 				SoundCloud Events
 			 */
 
-			player.getDuration(function (duration) {
-				data.duration = duration;
-				components.duration.innerText = playerActions.generateTimestamp(data.duration);
-			});
-
 			player.play();
 			// player.play(); // Start preloading to make player.seekTo() work
 
@@ -120,6 +115,11 @@
 				// 	firstPlay = false;
 				// 	player.pause(); // We pause it as soon as it starts playing
 				// }
+
+				player.getDuration(function (duration) {
+					data.duration = duration;
+					components.duration.innerText = playerActions.generateTimestamp(data.duration);
+				});
 
 				components.player.style.display = 'block';
 				components.player.style.bottom = '0';
