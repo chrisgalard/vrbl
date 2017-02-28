@@ -1,0 +1,30 @@
+extends ../layouts/default
+
+block content
+	each audioType, key in audioTypes
+		section(class=key + '-audios clearfix')
+			.container
+				if key != 'featured'
+					h2.title.section-title= utils.upcase(key)
+				each audio, index in audioType
+					article.audio(class=key == 'featured' && index == 0 ? 'big-audio' : null)
+						img.audio__image(src=audio.image.url, width='300', height='300')
+						a.js-play.player__play(href='#' data-sc-url=audio.soundCloudURL) Play
+						a.audio__info(href='/audios/' + audio.slug)
+							p.audio__author: span= audio.author
+							h3.audio__title: span= audio.name
+				else
+					.error-section Please add #{key} audios to the database
+
+	#player.player.clearfix
+		.container
+			//- a#play.player__play--bottom(href='#') Play
+			.player__timeline#timeline
+				.elapsed-number#elapsed-number 00:00
+				.elapsed-container#elapsed-container
+					.elapsed#elapsed-bar
+				.total#duration 00:00
+
+block js
+	script(src='https://w.soundcloud.com/player/api.js')
+	script(src='/js/audio-player.js')

@@ -1,0 +1,47 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+		title= audio.name + ' | VRBL'
+		link(rel='shortcut icon', href='/favicon.ico?v=2', type='image/x-icon')
+
+		link(href='/styles/vendor.css', rel='stylesheet')
+		link(href='/styles/player.css', rel='stylesheet')
+	body
+		#player.player
+			img.player__image(src=audio.image.url)
+			.player__image-overlay
+			a.js-play.player__play(href='#' data-sc-url=audio.soundCloudURL) Play
+			.player__actions.clearfix
+				a.download(href='#')
+				a#share.share(href='#')
+			.player__timeline#timeline
+				.elapsed-container#elapsed-container
+					.elapsed#elapsed-bar
+				#elapsed-number.elapsed-number 00:00
+				#duration.total 00:00
+		#share-modal.share-modal
+			h2 Share
+			ul.share-buttons
+				- var url = encodeURI('http://vrbl.io/audios/' + audio.slug);
+				- var description = encodeURI(audio.name);
+				li: a(href='https://www.facebook.com/sharer/sharer.php?u=' + url + '&t=' + description, title='Share on Facebook', target='_blank')
+					img(alt='Share on Facebook', src='/images/share-icons/Facebook.png')
+				li: a(href='https://twitter.com/intent/tweet?source=' + url + '&text=' + description + ':%20' + url + '&via=vrblmedia', target='_blank' title='Tweet')
+					img(alt='Tweet', src='/images/share-icons/Twitter.png')
+				li: a(href='https://plus.google.com/share?url=' + url, target='_blank', title='Share on Google+')
+					img(alt='Share on Google+', src='/images/share-icons/Google+.png')
+				li: a(href='http://www.reddit.com/submit?url=' + url + '&title=' + description, target='_blank', title='Submit to Reddit')
+					img(alt='Submit to Reddit', src='/images/share-icons/Reddit.png')
+				li: a(href='http://www.linkedin.com/shareArticle?mini=true&url=' + url + '&title=' + description + '&summary=&source=' + url, target='_blank', title='Share on LinkedIn')
+					img(alt='Share on LinkedIn', src='/images/share-icons/LinkedIn.png')
+				li: a(href='mailto:?subject=' + description + '&body=:%20' + url, target='_blank', title='Send email')
+					img(alt='Send email', src='/images/share-icons/Email.png')
+			h2 Embed Code
+			input.share-modal__embed-code(type='text' value='<iframe src="/player/' + audio.slug + '" frameborder="0" scrolling="no" width="100%" height="450px"></iframe>')
+		script(src='https://w.soundcloud.com/player/api.js')
+		script(src='/js/audio-player.js')
+		script(src='/js/share-modal.js')

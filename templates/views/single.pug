@@ -1,0 +1,43 @@
+extends ../layouts/default
+
+block content
+	section.single.clearfix
+		.container
+			article
+				header.single__header
+					h1.title.single__title= audio.name
+					h2.single__author= audio.author
+					.share
+						- var url = encodeURI('http://vrbl.io/audios/' + audio.slug);
+						- var description = encodeURI(audio.name);
+						a.share__facebook(href='https://www.facebook.com/sharer/sharer.php?u=' + url + '&t=' + description, title='Share on Facebook', target='_blank') Share
+						a.share__twitter(href='https://twitter.com/intent/tweet?source=' + url + '&text=' + description + ':%20' + url + '&via=vrblmedia', target='_blank' title='Tweet') Tweet
+				.single__content!= audio.content
+				aside.single__ads
+					each block in sidebar
+						!= block.content
+	.container
+		section(class='related-audios clearfix')
+					h2.title.section-title Next up
+					each audio in related
+						article.audio
+							img.audio__image(src=audio.image.url, width='300', height='300')
+							a.js-play.player__play(href='#' data-sc-url=audio.soundCloudURL) Play
+							a.audio__info(href='/audios/' + audio.slug)
+								p.audio__author: span= audio.author
+								h3.audio__title: span= audio.name
+					else
+						.error-section There's no related content
+
+	#player.player.clearfix
+		.container
+			//- a#play.player__play--bottom(href='#') Play
+			.player__timeline#timeline
+				.elapsed-number#elapsed-number 00:00
+				.elapsed-container#elapsed-container
+					.elapsed#elapsed-bar
+				.total#duration 00:00
+
+block js
+	script(src='https://w.soundcloud.com/player/api.js')
+	script(src='/js/audio-player.js')
