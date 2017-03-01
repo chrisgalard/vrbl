@@ -4,21 +4,15 @@
 	box-sizing: border-box;
 }
 
-body {
+html, body {
 	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
 }
 
 .container {
 	width: 100%;
 	padding: 0 1em;
 	margin: 0 auto;
-}
-
-@media (min-width: 75.062em) {
-	.container {
-		max-width: 75em;
-		padding: 0;
-	}
 }
 
 .clearfix:after {
@@ -28,24 +22,9 @@ body {
 }
 
 
-/* Buttons */
-.cta {
-	background-color: ;
-}
-
-
 /**
-	Navigation
+	Menus
  */
-
-.logo,
-.menu {
-	float: left;
-}
-
-.logo {
-	margin-right: 2em;
-}
 
 .menu-list {
 	list-style-type: none;
@@ -58,11 +37,49 @@ body {
 	text-decoration: none;
 }
 
-.has-dropdown > a {
-	position: relative;
+
+/**
+	Main Header
+ */
+
+.logo img {
+	max-width: 100%;
+	height: auto;
 }
 
-.has-dropdown > a:after {
+.main-header {
+	padding: 1em 0;
+	background-color: #eee;
+	position: relative;
+	z-index: 9;
+}
+
+.main-navigation > .menu-list {
+	margin-top: 8px;
+}
+
+.categories {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.categories a {
+	background-color: #b5ccda;
+	color: #3d3e3e;
+	padding: 10px;
+}
+
+.categories > a {
+	font-size: 1.125em;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.categories a:hover {
+	background-color: #a6bfce;
+}
+
+.categories > a:after {
 	content: '';
 	background: url('/images/arrow.png');
 	display: inline-block;
@@ -73,70 +90,19 @@ body {
 	top: -1px;
 }
 
-.dropdown {
-	position: absolute;
+.categories-dropdown {
 	display: none;
+	position: absolute;
 	min-width: 200px;
 }
 
-.has-dropdown:hover .dropdown {
+.categories:hover .categories-dropdown {
 	display: block;
 }
 
-
-/**
-	Main Header
- */
-
-.main-header {
-	padding: 1em 0;
-	background-color: #eee;
-	position: relative;
-	z-index: 9;
-}
-
-.main-header .menu > .menu-list {
-	margin-top: 8px;
-}
-
-.main-header .menu-item a {
-	background-color: #b5ccda;
-	color: #3d3e3e;
-	padding: 10px;
-}
-
-.main-menu-item {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.main-menu-item > a {
-	font-size: 1.125em;
-	font-weight: 900;
-	text-transform: uppercase;
-}
-
-.main-header .menu-item a:hover {
-	background-color: #a6bfce;
-}
-
-.social {
-	float: right;
-	margin-top: 12px;
-}
-
-.social__item {
-	display: inline-block;
-	opacity: .8;
-	transition: opacity .3s;
-}
-
-.social__item:hover {
-	opacity: 1;
-}
-
-.social__item + .social__item {
-	margin-left: 1em;
+.social-links__item img {
+	width: 32px;
+	height: auto;
 }
 
 
@@ -150,9 +116,14 @@ body {
 	padding: 50px 0;
 }
 
+.footer .logo,
+.footer .menu-list {
+	display: inline-block;
+	vertical-align: middle;
+}
+
 .footer .logo {
-	margin-right: 4em;
-	margin-top: 2em;
+	margin-right: 2em;
 }
 
 .footer .menu-list {
@@ -162,7 +133,7 @@ body {
 
 .footer .menu-item a {
 	color: #bbb;
-	font-size: 14px;
+	font-size: .875em;
 	line-height: 24px;
 }
 
@@ -182,51 +153,40 @@ body {
 
 
 /**
-	Featured Audios
+	Audios Sections
  */
 
+.highlighted {
+	background-color: rgba(0, 0, 0, 0.8);
+	transition: background-color .3s;
+}
+
+.audios {
+	margin-top: 70px;
+}
+
 .featured-audios {
-	margin-top: 25px;
+	margin-top: 1.5em;
+}
+
+.related-audios {
+	max-width: 55em;
 }
 
 .audio {
+	width: 100%;
 	position: relative;
-	width: 300px;
-	height: 300px;
-	float: left;
 }
 
 .audio__image {
 	width: 100%;
+	display: block;
 	height: auto;
 }
 
-.audio__info,
-.player__play,
-.player__pause {
-	position: absolute;
-}
-
-.player__play,
-.player__pause {
-	top: 20px;
-	left: 20px;
-	width: 50px;
-	height: 50px;
-	text-indent: 100%;
-	overflow-x: hidden;
-}
-
-.player__play {
-	background: url('/images/play.png') no-repeat center;
-}
-
-.player__pause {
-	background: url('/images/pause.png') no-repeat center;
-}
-
 .audio__info {
-	padding: 20px;
+	position: absolute;
+	padding: 1em;
 	width: 100%;
 	bottom: 0;
 	left: 0;
@@ -240,61 +200,17 @@ body {
 }
 
 .audio__title {
-	margin-top: .2em;
-	line-height: 30px;
-	font-size: 24px;
+	font-size: 1.5em;
+	line-height: 1.25;
 }
 
-.audio__author span,
-.audio__title span {
-	background-color: rgba(0, 0, 0, 0.8);
-
-	transition: background-color .3s;
+.audio .play-btn,
+.audio .pause-btn {
+	position: absolute;
+	top: 1em;
+	left: 1em;
 }
 
-.audio__info:hover .audio__author span,
-.audio__info:hover .audio__title span {
-	background-color: rgba(0, 0, 0, 1);
-}
-
-.big-audio {
-	width: 600px;
-	height: 600px;
-}
-
-.big-audio .audio__title {
-	font-size: 60px;
-	line-height: 70px;
-}
-
-.big-audio .audio__author {
-	font-size: 24px;
-}
-
-/**
-	Trending Audios
- */
-
-.audios-section,
-.trending-audios,
-.favorites-audios,
-.related-audios {
-	margin-top: 70px;
-}
-
-.related-audios {
-	max-width: 880px;
-}
-
-.related-audios .audio {
-	width: 33.33%;
-	height: auto;
-}
-
-.related-audios .audio__title {
-	font-size: 1.125em;
-	line-height: 1.2;
-}
 
 /**
 	Single Audio
@@ -303,13 +219,7 @@ body {
 	margin-top: 3.125em;
 }
 
-.single__title,
 .single__content {
-	max-width: 880px;
-}
-
-.single__content {
-	float: left;
 	width: 100%;
 	font-size: 1.125em;
 	color: #3d3e3e;
@@ -321,7 +231,6 @@ body {
 }
 
 .single__title {
-	font-size: 60px;
 	margin-top: 0;
 	margin-bottom: 0;
 }
@@ -333,13 +242,138 @@ body {
 }
 
 .single__ads {
-	max-width: 280px;
-	float: right;
+	max-width: 18.75em; /* 300px */
+	margin: 0 auto;
+}
+
+.single__ads-block:not(:first-child) {
+	display: none;
 }
 
 .single__ads img {
 	width: 100%;
 	height: auto;
+}
+
+
+/**
+	Reponsive Styles
+ */
+
+@media (max-width: 60em) {
+	.footer .menu-list {
+		margin-top: 2em;
+	}
+
+	.site-links {
+		margin-top: 1.25em;
+		float: left;
+	}
+
+	.social-links {
+		float: right;
+	}
+
+	.audio + .audio {
+		margin-top: 1em;
+	}
+}
+
+@media (min-width: 60.0625em) {
+	.logo,
+	.main-navigation {
+		float: left;
+	}
+
+	.logo {
+		margin-right: 2em;
+	}
+
+	.social-links {
+		float: right;
+		margin-top: 12px;
+	}
+
+	.social-links__item {
+		display: inline-block;
+		opacity: .8;
+		transition: opacity .3s;
+	}
+
+	.social-links__item:hover {
+		opacity: 1;
+	}
+
+	.social-links__item + .social-links__item {
+		margin-left: 1em;
+	}
+
+	.audio {
+		width: 25%; /* 300px */
+		float: left;
+	}
+
+	.big-audio {
+		width: 50%; /* 600px */
+	}
+
+	.related-audios .audio {
+		width: 33.33%;
+		height: auto;
+	}
+
+	.audio__info:hover .highlighted {
+		background-color: rgba(0, 0, 0, 1);
+	}
+}
+
+@media (min-width: 75.0625em) {
+	.container {
+		max-width: 75em;
+		padding: 0;
+	}
+
+	.big-audio .audio__author {
+		font-size: 24px;
+	}
+
+	.audio__title {
+		margin-top: .2em;
+		font-size: 1.5em;
+	}
+
+	.big-audio .audio__title {
+		font-size: 3.75em; /* 60px */
+		line-height: 1.2;
+	}
+
+	.related-audios .audio__title {
+		font-size: 1.125em;
+		line-height: 1.2;
+	}
+
+
+	.single__title,
+	.single__content {
+		max-width: 75%;
+	}
+
+	.single__title {
+		font-size: 3.75em;
+	}
+
+	.single__content {
+		float: left;
+	}
+
+	.single__ads {
+		float: right;
+		width: 20%;
+	}
+
+	.single__ads-block:not(:first-child) {
+		display: block;
+	}
 }
 
 /**
@@ -380,6 +414,28 @@ body {
 	background: url('/images/share-icons/twitter-share-icon.png') no-repeat center left;
 }
 
+
+/**
+	Buttons
+*/
+
+.play-btn,
+.pause-btn {
+	width: 50px;
+	height: 50px;
+	text-indent: 100%;
+	overflow-x: hidden;
+}
+
+.play-btn {
+	background: url('/images/play.png') no-repeat center;
+}
+
+.pause-btn {
+	background: url('/images/pause.png') no-repeat center;
+}
+
+
 /**
 	Audio Player
  */
@@ -396,24 +452,9 @@ body {
 	transition: bottom .5s;
 }
 
-.player__play--bottom,
-.player__pause--bottom {
-	width: 50px;
-	height: 50px;
-	text-indent: 100%;
-	overflow-x: hidden;
-}
-
-.player__play--bottom {
-	background: url('/images/play.png') no-repeat center;
-}
-
-.player__pause--bottom {
-	background: url('/images/pause.png') no-repeat center;
-}
-
-.player__play--bottom,
-.player__timeline,
+.player .play-btn,
+.player .pause-btn,
+.timeline,
 .player__actions,
 .elapsed-number,
 .elapsed-container,
@@ -422,8 +463,14 @@ body {
 	vertical-align: middle;
 }
 
-.player__timeline {
-	margin-left: 2em;
+.timeline {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.elapsed-number,
+.total {
+	font-size: .875em;
 }
 
 .elapsed-container {
@@ -431,8 +478,8 @@ body {
 	height: .625em;
 	background-color: #fff;
 	border-radius: 5px;
-	width: 31.25em;
-	margin: 0 1em;
+	width: 60%;
+	margin: 0 5%;
 }
 
 .elapsed {
