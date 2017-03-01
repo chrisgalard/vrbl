@@ -14,11 +14,11 @@ html
 		#player.player
 			img.player__image(src=audio.image.url)
 			.player__image-overlay
-			a.js-play.player__play(href='#' data-sc-url=audio.soundCloudURL) Play
+			a.js-play.player__play(href=audio.soundCloudURL) Play
 			.player__actions.clearfix
 				a.download(href='#')
 				a#share.share(href='#')
-			.player__timeline#timeline
+			.timeline#timeline
 				.elapsed-container#elapsed-container
 					.elapsed#elapsed-bar
 				#elapsed-number.elapsed-number 00:00
