@@ -20,15 +20,14 @@ var keystone = require('keystone');
 */
 exports.initLocals = function (req, res, next) {
 	var locals = res.locals;
+	locals.menu = {};
 	
 	keystone.list('AudioCategory').model.find(function (err, categories) {
 		if (err) return next(err);
 
-		locals.navLinks = [
-			{name: 'Topics', url: '#', dropdown: categories},
-		];
-
+		locals.menu.categories = categories;
 		locals.user = req.user;
+
 		next();
 	});
 };
