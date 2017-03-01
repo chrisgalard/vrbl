@@ -32,7 +32,7 @@ html, body {
 .player__play,	
 .player__pause,
 .player__actions,
-.player__timeline {
+.timeline {
 	position: absolute;
 }
 
@@ -93,7 +93,7 @@ html, body {
 	margin-left: 1.5em;
 }
 
-.player__timeline {
+.timeline {
 	right: 0;
 	bottom: 0;
 	left: 0;
