@@ -2,9 +2,8 @@ include ../mixins/flash-messages
 
 doctype html
 html
-
-	//- HTML HEADER
 	head
+		meta(name='robots', content='noindex')
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -18,47 +17,35 @@ html
 		if user && user.canAccessKeystone
 			link(href='/keystone/styles/content/editor.min.css', rel='stylesheet')
 
-		//- Include template-specific stylesheets by extending the css block
 		block css
-
-		//- Add any other template-specific HEAD tags by extending the head block
 		block head
-
-	//- HTML BODY
 	body(class=section ? section : null)
 
 		//- HEADER
 		.main-header.clearfix: .container
-			.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
-			nav.menu: ul.menu-list
-				each link in navLinks
-					li.menu-item.main-menu-item(class=link.dropdown ? 'has-dropdown' : null)
-						a(href='#')= link.name
-						ul.menu-list.dropdown
-							if link.dropdown
-								each dropdownLink in link.dropdown
-									li: a(href='/categories/' + dropdownLink.slug)= dropdownLink.name
-			ul.menu-list.social
-				li.social__item: a(href='#'): img(src='/images/facebook-icon.png' alt='See VRBL on Facebook')
-				li.social__item: a(href='#'): img(src='/images/twitter-icon.png' alt='See VRBL on Twitter')
-				li.social__item: a(href='#'): img(src='/images/instagram-icon.png' alt='See VRBL on Instagram')
-				li.social__item: a(href='#'): img(src='/images/youtube-icon.png' alt='See VRBL on Youtube')
+			.site-links
+				.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
+				nav.main-navigation: ul.menu-list
+					li.menu-item.categories
+						a(href='#') Topics
+						ul.menu-list.categories-dropdown
+							each category in menu.categories
+								li: a(href='/categories/' + category.slug)= category.name
+			ul.menu-list.social-links
+				li.social-links__item: a(href='#'): img(src='/images/facebook-icon.png' alt='See VRBL on Facebook')
+				li.social-links__item: a(href='#'): img(src='/images/twitter-icon.png' alt='See VRBL on Twitter')
+				li.social-links__item: a(href='#'): img(src='/images/instagram-icon.png' alt='See VRBL on Instagram')
+				li.social-links__item: a(href='#'): img(src='/images/youtube-icon.png' alt='See VRBL on Youtube')
 
-		//- The Intro block appears above flash messages (used for temporary information display)
 		block intro
 
-		//- Flash messages allow you to display once-off status messages to users, e.g. form
-		//- validation errors, success messages, etc.
 		+flash-messages(messages)
 
-		//- The content block should contain the body of your template's content
 		block content
 
-
-		//- FOOTER
 		.footer.clearfix: .container
 			.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
-			nav.menu: ul.menu-list
+			ul.menu-list
 				li.menu-item: a(href='#') Become a contributor
 				li.menu-item: a(href='#') About us
 				li.menu-item: a(href='#') Contact us
@@ -66,9 +53,6 @@ html
 				li.menu-item: a(href='#') Privacy policy
 
 			// p <a href='http://flinzmedia.com' target='_blank'>Website design &amp; development</a> by Flinz Media.
-
-
-		//- JAVASCRIPT
 
 		script(src='/js/vendor.js')
 
