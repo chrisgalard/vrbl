@@ -62,8 +62,8 @@
 		},
 
 		togglePlayButton: function (button) {
-			button.classList.toggle('player__play');
-			button.classList.toggle('player__pause');
+			button.classList.toggle('play-btn');
+			button.classList.toggle('pause-btn');
 		},
 	};
 
@@ -71,7 +71,7 @@
 		components.play[i].addEventListener('click', function (event) {
 			event.preventDefault();
 
-			var newSoundCloudURL = this.getAttribute('data-sc-url');
+			var newSoundCloudURL = this.href;
 
 			if (firstLoad) {
 				firstLoad = false;
