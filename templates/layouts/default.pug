@@ -57,6 +57,8 @@ html.no-js
 
 			// p <a href='http://flinzmedia.com' target='_blank'>Website design &amp; development</a> by Flinz Media.
 
+		script.
+			document.getElementsByClassName('no-fouc')[0].style.display = 'block';
 		script(src='/js/vendor.js')
 
 		//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
@@ -64,7 +66,6 @@ html.no-js
 		if user && user.canAccessKeystone
 			script(src='/keystone/js/content/editor.js')
 
-		//- Add scripts that are globally required by your site here.
 
 		//- Include template-specific javascript files by extending the js block
 		block js
