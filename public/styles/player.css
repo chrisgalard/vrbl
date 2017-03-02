@@ -29,8 +29,8 @@ html, body {
 
 .player__image,
 .player__image-overlay,
-.player__play,	
-.player__pause,
+.play-btn,	
+.pause-btn,
 .player__actions,
 .timeline {
 	position: absolute;
@@ -51,8 +51,8 @@ html, body {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-.player__play,
-.player__pause {
+.play-btn,
+.pause-btn {
 	top: 20px;
 	left: 20px;
 	width: 50px;
@@ -61,11 +61,11 @@ html, body {
 	overflow-x: hidden;
 }
 
-.player__play {
+.play-btn {
 	background: url('/images/play.png') no-repeat center;
 }
 
-.player__pause {
+.pause-btn {
 	background: url('/images/pause.png') no-repeat center;
 }
 
