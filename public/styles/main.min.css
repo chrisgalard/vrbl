@@ -584,10 +584,6 @@ html, body {
 	vertical-align: middle;
 }
 
-.footer .logo {
-	margin-right: 2em;
-}
-
 .footer .menu-list {
 	padding-left: 2em;
 	border-left: 1px solid #b6b6b6;
@@ -669,7 +665,7 @@ html, body {
 
 .audio__title {
 	font-size: 1.5em;
-	line-height: 1.25;
+	line-height: 1.5;
 }
 
 .audio .play-btn,
@@ -773,6 +769,7 @@ html, body {
 	height: 50px;
 	text-indent: 100%;
 	overflow-x: hidden;
+	background-size: 100%;
 }
 
 .play-btn {
@@ -845,6 +842,10 @@ html, body {
 @media (max-width: 60em) {
 	.footer .menu-list {
 		margin-top: 2em;
+	}
+
+	.footer .logo {
+		display: block;
 	}
 
 	.site-links {
@@ -925,8 +926,8 @@ html, body {
 	}
 
 	.big-audio .audio__title {
-		font-size: 3.75em; /* 60px */
-		line-height: 1.2;
+		font-size: 3em; /* 48px */
+		line-height: 1.45;
 	}
 
 	.related-audios .audio__title {
