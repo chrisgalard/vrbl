@@ -9,6 +9,10 @@ html, body {
 	font-size: 100%;
 }
 
+.js .no-fouc {
+	display: none;
+}
+
 .container {
 	width: 100%;
 	padding: 0 1em;
@@ -257,6 +261,120 @@ html, body {
 
 
 /**
+	Error Sections
+*/
+
+.error-section {
+	background-color: #ccc;
+	color: #bbb;
+	text-align: center;
+	line-height: 10em;
+	font-size: 2em;
+}
+
+
+/**
+	Share Buttons
+ */
+
+.share a {
+	text-decoration: none;
+	display: inline-block;
+	padding-left: 30px;
+	line-height: 24px;
+}
+
+.share a + a {
+	margin-left: 1em;
+}
+
+.share__facebook {
+	color: #3c579e;
+	background: url('/images/share-icons/facebook-share-icon.png') no-repeat center left;
+}
+
+.share__twitter {
+	color: #55acee;
+	background: url('/images/share-icons/twitter-share-icon.png') no-repeat center left;
+}
+
+
+/**
+	Buttons
+*/
+
+.play-btn,
+.pause-btn {
+	width: 50px;
+	height: 50px;
+	text-indent: 100%;
+	overflow-x: hidden;
+}
+
+.play-btn {
+	background: url('/images/play.png') no-repeat center;
+}
+
+.pause-btn {
+	background: url('/images/pause.png') no-repeat center;
+}
+
+
+/**
+	Audio Player
+ */
+
+.player {
+	background-color: #000;
+	color: #fff;
+	position: fixed;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: 1em 0;
+	transition: bottom .5s;
+}
+
+.player .play-btn,
+.player .pause-btn,
+.timeline,
+.player__actions,
+.elapsed-number,
+.elapsed-container,
+.total {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.timeline {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.elapsed-number,
+.total {
+	font-size: .875em;
+}
+
+.elapsed-container {
+	padding: 2px;
+	height: .625em;
+	background-color: #fff;
+	border-radius: 5px;
+	width: 60%;
+	margin: 0 5%;
+}
+
+.elapsed {
+	background-color: #000;
+	border-radius: 5px;
+	width: 0;
+	height: 100%;
+}
+
+
+/**
 	Reponsive Styles
  */
 
@@ -374,117 +492,4 @@ html, body {
 	.single__ads-block:not(:first-child) {
 		display: block;
 	}
-}
-
-/**
-	Error Sections
-*/
-
-.error-section {
-	background-color: #ccc;
-	color: #bbb;
-	text-align: center;
-	line-height: 10em;
-	font-size: 2em;
-}
-
-
-/**
-	Share Buttons
- */
-
-.share a {
-	text-decoration: none;
-	display: inline-block;
-	padding-left: 30px;
-	line-height: 24px;
-}
-
-.share a + a {
-	margin-left: 1em;
-}
-
-.share__facebook {
-	color: #3c579e;
-	background: url('/images/share-icons/facebook-share-icon.png') no-repeat center left;
-}
-
-.share__twitter {
-	color: #55acee;
-	background: url('/images/share-icons/twitter-share-icon.png') no-repeat center left;
-}
-
-
-/**
-	Buttons
-*/
-
-.play-btn,
-.pause-btn {
-	width: 50px;
-	height: 50px;
-	text-indent: 100%;
-	overflow-x: hidden;
-}
-
-.play-btn {
-	background: url('/images/play.png') no-repeat center;
-}
-
-.pause-btn {
-	background: url('/images/pause.png') no-repeat center;
-}
-
-
-/**
-	Audio Player
- */
-
-.player {
-	background-color: #000;
-	color: #fff;
-	position: fixed;
-	bottom: -100%;
-	left: 0;
-	width: 100%;
-	text-align: center;
-	padding: 1em 0;
-	transition: bottom .5s;
-}
-
-.player .play-btn,
-.player .pause-btn,
-.timeline,
-.player__actions,
-.elapsed-number,
-.elapsed-container,
-.total {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.timeline {
-	width: 100%;
-	margin: 0 auto;
-}
-
-.elapsed-number,
-.total {
-	font-size: .875em;
-}
-
-.elapsed-container {
-	padding: 2px;
-	height: .625em;
-	background-color: #fff;
-	border-radius: 5px;
-	width: 60%;
-	margin: 0 5%;
-}
-
-.elapsed {
-	background-color: #000;
-	border-radius: 5px;
-	width: 0;
-	height: 100%;
 }

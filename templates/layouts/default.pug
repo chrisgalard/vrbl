@@ -1,8 +1,10 @@
 include ../mixins/flash-messages
 
 doctype html
-html
+html.no-js
 	head
+		script.
+			(function (H) {H.className=H.className.replace(/\bno-js\b/, 'js')})(document.documentElement);
 		meta(name='robots', content='noindex')
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -41,7 +43,8 @@ html
 
 		+flash-messages(messages)
 
-		block content
+		.no-fouc
+			block content
 
 		.footer.clearfix: .container
 			.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
