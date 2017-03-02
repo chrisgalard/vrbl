@@ -22,7 +22,8 @@ block content
 			h2.title.section-title Next up
 			each audio in related
 				article.audio
-					img.audio__image(src=audio.image.url, width='300', height='300')
+					.audio__image-container
+						img.audio__image(src=audio.image.url, width='300', height='300')
 					a.js-play.play-btn(href=audio.soundCloudURL) Play
 					a.audio__info(href='/audios/' + audio.slug)
 						p.audio__author: span.highlighted= audio.author
