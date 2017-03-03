@@ -1,4 +1,4 @@
-extends ../layouts/default
+extends ../layouts/default.pug
 
 block content
 	section.single.clearfix
@@ -8,10 +8,8 @@ block content
 					h1.title.single__title= audio.name
 					h2.single__author= audio.author
 					.share
-						- var url = encodeURI('http://vrbl.io/audios/' + audio.slug);
-						- var description = encodeURI(audio.name);
-						a.share__facebook(href='https://www.facebook.com/sharer/sharer.php?u=' + url + '&t=' + description, title='Share on Facebook', target='_blank') Share
-						a.share__twitter(href='https://twitter.com/intent/tweet?source=' + url + '&text=' + description + ':%20' + url + '&via=vrblmedia', target='_blank' title='Tweet') Tweet
+						a.share__facebook(href='https://www.facebook.com/sharer/sharer.php?u=' + data.fullUrl + '&t=' + description, title='Share on Facebook', target='_blank') Share
+						a.share__twitter(href='https://twitter.com/intent/tweet?source=' + data.fullUrl + '&text=' + description + ':%20' + data.fullUrl + '&via=vrblmedia', target='_blank' title='Tweet') Tweet
 				.single__content!= audio.content
 				aside.single__ads
 					each block in sidebar
