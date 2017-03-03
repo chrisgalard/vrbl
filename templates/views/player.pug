@@ -26,6 +26,7 @@ html
 		#share-modal.share-modal
 			h2 Share
 			ul.share-buttons
+				- var description = encodeURI(audio.name);
 				li: a(href='https://www.facebook.com/sharer/sharer.php?u=' + data.fullUrl + '&t=' + description, title='Share on Facebook', target='_blank')
 					img(alt='Share on Facebook', src='/images/facebook-icon.png')
 				li: a(href='https://twitter.com/intent/tweet?source=' + data.fullUrl + '&text=' + description + ':%20' + data.fullUrl + '&via=vrblmedia', target='_blank' title='Tweet')
