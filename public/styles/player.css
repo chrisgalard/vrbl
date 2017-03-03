@@ -63,10 +63,12 @@ html, body {
 
 .play-btn {
 	background: url('/images/play.png') no-repeat center;
+	background-size: 100%;
 }
 
 .pause-btn {
 	background: url('/images/pause.png') no-repeat center;
+	background-size: 100%;
 }
 
 .player__actions {
@@ -88,9 +90,9 @@ html, body {
 
 .player__actions .share {
 	background: url('/images/share.png');
-	width: 33px;
-	height: 36px;
-	margin-left: 1.5em;
+	background-size: 100%;
+	width: 32px;
+	height: 32px;
 }
 
 .timeline {
@@ -156,16 +158,21 @@ html, body {
 	Share buttons
 */
 
-ul.share-buttons{
+.share-buttons {
   list-style: none;
   padding: 0;
 }
 
-ul.share-buttons li{
-  display: inline;
+.share-buttons li {
+  display: inline-block;
 }
 
-ul.share-buttons .sr-only {
+.share-buttons img {
+	width: 32px;
+	height: auto;
+}
+
+.share-buttons .sr-only {
   position: absolute;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
