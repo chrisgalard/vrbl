@@ -1,0 +1,13 @@
+extends ../layouts/default.pug
+
+block content
+	section.single.clearfix
+		.container
+			article
+				header.single__header
+					h1.title.single__title= page.name
+					h2.single__author= page.author
+					.share
+						a.share__facebook(href='https://www.facebook.com/sharer/sharer.php?u=' + data.fullUrl + '&t=' + description, title='Share on Facebook', target='_blank') Share
+						a.share__twitter(href='https://twitter.com/intent/tweet?source=' + data.fullUrl + '&text=' + description + ':%20' + data.fullUrl + '&via=vrblmedia', target='_blank' title='Tweet') Tweet
+				.single__content!= page.content
