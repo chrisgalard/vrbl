@@ -42,17 +42,18 @@ html
 
 		+flash-messages(messages)
 
-		.no-fouc
-			block content
+		block content
 
 		.footer.clearfix: .container
 			.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
 			ul.menu-list
-				li.menu-item: a(href='#') Become a contributor
-				li.menu-item: a(href='#') About us
-				li.menu-item: a(href='#') Contact us
-				li.menu-item: a(href='#') Terms &amp; conditions
-				li.menu-item: a(href='#') Privacy policy
+				each page in pages
+					li.menu-item: a(href='/pages/' + page.slug)= page.name
+					//- li.menu-item: a(href='#') Become a contributor
+					//- li.menu-item: a(href='#') About us
+					//- li.menu-item: a(href='#') Contact us
+					//- li.menu-item: a(href='#') Terms &amp; conditions
+					//- li.menu-item: a(href='#') Privacy policy
 
 			// p <a href='http://flinzmedia.com' target='_blank'>Website design &amp; development</a> by Flinz Media.
 
