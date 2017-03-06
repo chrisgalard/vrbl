@@ -12,8 +12,8 @@ var vrblStorage = new keystone.Storage({
 		url: true,
 	},
 	fs: {
-		path: keystone.expandPath('./public/images'),
-		publicPath: '/images/',
+		path: keystone.expandPath('./public/images/audios'),
+		publicPath: '/images/audios/',
 	},
 });
 
