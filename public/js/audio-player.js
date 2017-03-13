@@ -1,42 +1,138 @@
+function Timestamp(milliseconds) {
+	var type = typeof milliseconds;
+
+	if (type !== 'string' && type !== 'number')
+		throw new TypeError('You need to pass a number or string');
+
+	this.milliseconds = milliseconds;
+}
+
+Timestamp.prototype.toSeconds = function () {
+	return this.milliseconds / 1000;
+};
+
+Timestamp.prototype.toMinutes = function () {
+	return this.toSeconds(this.milliseconds) / 60; 
+};
+
+Timestamp.prototype.toHours = function () {
+	return this.toMinutes(this.milliseconds) / 60;
+};
+
+Timestamp.prototype.toString = function () {
+	var addPadding = function (time) {
+		var string = String(time);
+		if (string.length < 2) string = '0' + string;
+		return string;
+	};
+
+	var hours, minutes, seconds, milliseconds;
+
+	hours = addPadding(Math.trunc(this.toHours()));
+	milliseconds -= hours * 3600000;
+	minutes = addPadding(Math.trunc(this.toMinutes()) % 60);
+	milliseconds -= minutes * 60000;
+	seconds = addPadding(Math.trunc(this.toSeconds()) % 60);
+
+	return (hours !== '00' ? hours + ':' : '') + minutes + ':' + seconds;
+}
+
+
+var BottomPlayer = function (target) {
+	this.DOMElement = render(target);
+
+	this.hide = function () {
+		this.DOMElement.classList.remove('is-visible');
+	};
+
+	this.show = function () {
+		this.DOMElement.classList.add('is-visible');
+	};
+
+	this.setState = function (state) {
+		var playButton = this.DOMElement.getElementById('play');
+
+		if (state === 'playing') {
+			// is-loading class could be active here
+			if (playButton.classList.contains('is-loading'))
+				playButton.classList.remove('is-loading');
+
+			playButton.classList.add('is-playing');
+		} else if (state === 'paused') {
+			playButton.classList.remove('is-playing');
+		} else {
+			playButton.classList.add('is-loading');
+		}
+	};
+
+	this.setTimer = function (miliseconds) {
+		var timer = this.DOMElement.getElementById('timer');
+		timer.innerText = new Timestamp(miliseconds);
+	};
+
+	function render(target) {
+		var player = document.createElement('div');
+		player.id = player.className = 'player';
+
+		player.innerHTML = [
+			'<div class="container">',
+			'	<img class="player-thumbnail" src="#" alt="Title of the song">',
+			'	<a id="play" class="js-play play-btn" href="#">Play</a>',
+			'	<div id="timeline" class="timeline">',
+			'		<div id="timer" class="elapsed-number">',
+			'			00:00',
+			'		</div>',
+			'		<div id="elapsed-container" class="elapsed-container">',
+			'			<div id="elapsed-bar" class="elapsed-bar"></div>',
+			'		</div>',
+			'		<div id="total-duration" class="total-duration">',
+			'			00:00',
+			'		</div>',
+			'	</div>',
+			'</div>',
+		].join('\n');
+
+		return target.appendChild(player);
+	};
+};
+
+var player = new BottomPlayer(document.body);
+console.log(player);
+// player.render();
+// player.hide();
+// player.show();
+// player.setState('paused|playing|loading');
+// player.setTimer();
+// player.setScrubber();
+// player.setDuration();
+// player.setTitle();
+// player.setThumbnail();
+
 var soundCloudPlayer = function() {
 
-	function Timestamp(milliseconds) {
-		var type = typeof milliseconds;
+	function renderPlayer(target) {
+		var player = document.createElement('div');
+		player.id = player.className = 'player';
 
-		if (type !== 'string' && type !== 'number')
-			throw new TypeError('You need to pass a number or string');
+		player.innerHTML = [
+			'<div class="container">',
+			'	<img class="player-thumbnail" src="" alt="Title of the song">',
+			'	<a class="js-play play-btn" href="#">Play</a>',
+			'	<div id="timeline" class="timeline">',
+			'		<div id="elapsed-number" class="elapsed-number">',
+			'			00:00',
+			'		</div>',
+			'		<div id="elapsed-container" class="elapsed-container">',
+			'			<div id="elapsed-bar" class="elapsed-bar"></div>',
+			'		</div>',
+			'		<div id="total-duration" class="total-duration">',
+			'			00:00',
+			'		</div>',
+			'	</div>',
+			'</div>',
+		].join('\n');
 
-		var addPadding = function (time) {
-			var string = String(time);
-			if (string.length < 2) string = '0' + string;
-			return string;
-		};
-
-		this.milliseconds = milliseconds;
-
-		this.toSeconds = function () {
-			return this.milliseconds / 1000;
-		};
-
-		this.toMinutes = function () {
-			return this.toSeconds(this.milliseconds) / 60; 
-		};
-
-		this.toHours = function () {
-			return this.toMinutes(this.milliseconds) / 60;
-		};
-
-		this.toString = function () {
-			var hours, minutes, seconds, milliseconds;
-
-			hours = addPadding(Math.trunc(this.toHours()));
-			milliseconds -= hours * 3600000;
-			minutes = addPadding(Math.trunc(this.toMinutes()) % 60);
-			milliseconds -= minutes * 60000;
-			seconds = addPadding(Math.trunc(this.toSeconds()) % 60);
-
-			return (hours !== '00' ? hours + ':' : '') + minutes + ':' + seconds;
-		}
+		return target.appendChild(player);
 	}
 
 	function loadWidget(target) {
@@ -55,6 +151,7 @@ var soundCloudPlayer = function() {
 		});
 	}
 
+	var player = renderPlayer(document.body);
 	var widget = loadWidget(document.body);
 	var data = {};
 	var interval;
@@ -66,7 +163,7 @@ var soundCloudPlayer = function() {
 	var components = {
 		player: document.getElementById('player'),
 		play: document.getElementsByClassName('js-play'),
-		duration: document.getElementById('duration'),
+		duration: document.getElementById('total-duration'),
 		elapsed: document.getElementById('elapsed-container'),
 		elapsedNumber: document.getElementById('elapsed-number'),
 		elapsedBar: document.getElementById('elapsed-bar'),
@@ -84,11 +181,11 @@ var soundCloudPlayer = function() {
 			components.elapsedBar.style.width = position * 100 / duration + '%';
 		},
 
-		togglePlayButton: function (button) {
-			button.classList.toggle('play-btn');
-			button.classList.toggle('pause-btn');
+		togglePlayButton: function (button, state) {
+			button.classList.toggle(state);
 		},
 	};
+
 
 	// Binding all the play buttons to the click event
 	for (i = 0; i < components.play.length; i++) {
@@ -99,17 +196,20 @@ var soundCloudPlayer = function() {
 			var newSoundCloudURL = self.href;
 
 			if (soundCloudURL !== newSoundCloudURL) {
-				if (activeButton)
-					playerActions.togglePlayButton(activeButton);
+				if (activeButton && activeButton.classList.contains('is-playing'))
+					playerActions.togglePlayButton(activeButton, 'is-playing');
+
+				playerActions.togglePlayButton(self, 'is-loading');
 
 				loadNewTrack(widget, newSoundCloudURL, function () {
 					soundCloudURL = newSoundCloudURL;
-					playerActions.togglePlayButton(self);
+					playerActions.togglePlayButton(self, 'is-loading');
+					playerActions.togglePlayButton(self, 'is-playing');
 					widget.play();
 				});
 			} else {
 				widget.toggle();
-				playerActions.togglePlayButton(self);
+				playerActions.togglePlayButton(self, 'is-playing');
 			}
 
 			activeButton = self;
@@ -180,6 +280,4 @@ var soundCloudPlayer = function() {
 
 };
 
-soundCloudPlayer({
-	preload: true
-});
+soundCloudPlayer();
