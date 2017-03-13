@@ -180,11 +180,6 @@ body {
 	Audios Sections
  */
 
-.highlighted {
-	background-color: rgba(0, 0, 0, 0.8);
-	transition: background-color .3s;
-}
-
 .audios {
 	margin-top: 70px;
 }
@@ -222,6 +217,22 @@ body {
 	left: 0;
 	text-decoration: none;
 	color: #fff;
+}
+
+.audio__author,
+.highlighted {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.audio__author {
+	display: inline-block;
+}
+
+.highlighted {
+	background-image: linear-gradient(transparent calc(100% - 6px), white 6px);
+	background-size: 0% 100%;
+	background-repeat: no-repeat;
+	transition: background-size .8s;
 }
 
 .audio__title,
@@ -339,7 +350,7 @@ body {
 	overflow-x: hidden;
 	border: 4px solid #fff;
 	border-radius: 100%;
-	transition: background-color .3s;
+	transition: background-color .2s;
 }
 
 .play-btn:before,
@@ -400,7 +411,7 @@ body {
 	height: 20px;
 	background-color: #fff;
 	border-radius: 100%;
-	animation: .5s infinite alternate loading;
+	animation: .3s infinite alternate loading;
 }
 
 @keyframes loading {
@@ -608,6 +619,7 @@ body {
 
 	.audio__info:hover .highlighted {
 		background-color: rgba(0, 0, 0, 1);
+		background-size: 100% 100%;
 	}
 }
 
