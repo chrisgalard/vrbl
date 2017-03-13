@@ -12,7 +12,8 @@ html
 		link(rel='shortcut icon', href='/favicon.ico?v=2', type='image/x-icon')
 
 		link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700', rel='stylesheet')
-		link(href='/styles/main.min.css', rel='stylesheet')
+		link(href='/styles/normalize.css', rel='stylesheet')
+		link(href='/styles/main.css', rel='stylesheet')
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
@@ -23,20 +24,31 @@ html
 	body(class=section ? section : null)
 
 		//- HEADER
-		.main-header.clearfix: .container
-			.site-links
+		.main-header.clearfix
+			nav.navigation.js-navigation
+				.container
+					ul.nude-list
+						each category in menu.categories
+							li: a(href='/categories/' + category.slug)= category.name
+
+			.container
 				.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
-				nav.main-navigation: ul.menu-list
-					li.menu-item.categories
-						a(href='#') Topics
-						ul.menu-list.categories-dropdown
-							each category in menu.categories
-								li: a(href='/categories/' + category.slug)= category.name
-			ul.menu-list.social-links
-				li.social-links__item: a(href='#'): img(src='/images/facebook-icon.png' alt='See VRBL on Facebook')
-				li.social-links__item: a(href='#'): img(src='/images/twitter-icon.png' alt='See VRBL on Twitter')
-				li.social-links__item: a(href='#'): img(src='/images/instagram-icon.png' alt='See VRBL on Instagram')
-				li.social-links__item: a(href='#'): img(src='/images/youtube-icon.png' alt='See VRBL on Youtube')
+
+				ul.nude-list.social-links.js-social-links.is-visible
+					li: a(href='#', target='_blank')
+						img(src='/images/facebook-icon.png' alt='See VRBL on Facebook')
+					li: a(href='#', target='_blank')
+						img(src='/images/twitter-icon.png' alt='See VRBL on Twitter')
+					li: a(href='#', target='_blank')
+						img(src='/images/instagram-icon.png' alt='See VRBL on Instagram')
+					li: a(href='#', target='_blank')
+						img(src='/images/youtube-icon.png' alt='See VRBL on Youtube')
+					li: a(href='#', target='_blank')
+						img(src='/images/spotify-icon.png' alt='See VRBL on Spotify')
+					li: a(href='https://soundcloud.com/vrblmedia', target='_blank')
+						img(src='/images/soundcloud-icon.png' alt='See VRBL on SoundCloud')
+
+				a.navigation-toggle.js-navigation-toggle(href='#') Topics
 
 		block intro
 
@@ -45,8 +57,8 @@ html
 		block content
 
 		.footer.clearfix: .container
-			.logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
-			ul.menu-list
+			.logo.footer-logo: a(href='/'): img(src='/images/logo.png', width='124', height='53')
+			ul.nude-list.footer-navigation
 				each page in pages
 					li.menu-item: a(href='/pages/' + page.slug)= page.name
 					//- li.menu-item: a(href='#') Become a contributor
@@ -57,13 +69,6 @@ html
 
 			// p <a href='http://flinzmedia.com' target='_blank'>Website design &amp; development</a> by Flinz Media.
 
-		script(src='/js/vendor.js')
-
-		//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
-		//- which generate links to edit content for users who can access Keystone
-		if user && user.canAccessKeystone
-			script(src='/keystone/js/content/editor.js')
-
-
-		//- Include template-specific javascript files by extending the js block
 		block js
+			script(src='/js/vendor.js')
+			script(src='/js/navigation.js')

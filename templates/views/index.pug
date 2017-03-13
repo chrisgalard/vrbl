@@ -17,15 +17,6 @@ block content
 				else
 					.error-section Please add #{key} audios to the database
 
-	#player.player.clearfix
-		.container
-			//- a#play.play-btn--bottom(href='#') Play
-			.timeline#timeline
-				.elapsed-number#elapsed-number 00:00
-				.elapsed-container#elapsed-container
-					.elapsed#elapsed-bar
-				.total#duration 00:00
-
-block js
+append js
 	script(src='https://w.soundcloud.com/player/api.js')
 	script(src='/js/audio-player.js')
