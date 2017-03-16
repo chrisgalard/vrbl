@@ -61,14 +61,8 @@ html
 			ul.nude-list.footer-navigation
 				each page in pages
 					li.menu-item: a(href='/pages/' + page.slug)= page.name
-					//- li.menu-item: a(href='#') Become a contributor
-					//- li.menu-item: a(href='#') About us
-					//- li.menu-item: a(href='#') Contact us
-					//- li.menu-item: a(href='#') Terms &amp; conditions
-					//- li.menu-item: a(href='#') Privacy policy
 
 			// p <a href='http://flinzmedia.com' target='_blank'>Website design &amp; development</a> by Flinz Media.
 
 		block js
-			script(src='/js/vendor.js')
-			script(src='/js/navigation.js')
+			script(data-main='/js/app.js' src='/js/require.js')

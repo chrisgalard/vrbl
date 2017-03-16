@@ -232,6 +232,7 @@ body {
 	background-image: linear-gradient(transparent calc(100% - 6px), white 6px);
 	background-size: 0% 100%;
 	background-repeat: no-repeat;
+	background-position: 0 100%;
 	transition: background-size .8s;
 }
 
@@ -425,8 +426,8 @@ body {
  */
 
 .player {
-	background-color: #000;
-	color: #fff;
+	background-color: #fff;
+	color: #333;
 	position: fixed;
 	bottom: -100%;
 	left: 0;
@@ -434,6 +435,7 @@ body {
 	text-align: center;
 	padding: 1em 0;
 	transition: bottom .5s;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .player:after {
@@ -446,40 +448,91 @@ body {
 	bottom: 0;
 }
 
-.player .play-btn,
-.player .pause-btn,
-.timeline,
-.player__actions,
-.elapsed-number,
-.elapsed-container,
-.total-duration {
-	display: inline-block;
-	vertical-align: middle;
+.player-thumbnail {
+	display: none;
 }
 
-.timeline {
+.player .play-btn,
+.player-info {
+	float: left;
+}
+
+.player-close {
+	float: right;
+	text-decoration: none;
+	width: 1.5em;
+	height: 1.5em;
+	line-height: 1.4;
+	border: 1px solid #333;
+	border-radius: 100%;
+	margin-top: 13px;
+}
+
+.player .play-btn {
+	margin-right: 1em;
+	border-color: #333;
+	border-width: 3px;
+}
+
+.player .play-btn:before {
+	border-left-color: #333;
+}
+
+.player .is-playing:before,
+.player .is-playing:after {
+	background-color: #333;
+}
+
+.player .is-loading:after {
+	background-color: #333;
+}
+
+.player-info {
+	text-align: left;
+	width: calc(100% - 50px - 4em);
+}
+
+.player-title {
+	font-weight: 400;
+	font-size: .875em;
+	white-space: nowrap;
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.player-progress {
 	width: 100%;
 	margin: 0 auto;
 }
 
-.elapsed-number,
-.total-duration {
-	font-size: .875em;
+.player-timer,
+.player-duration {
+	font-size: .75em;
 }
 
-.elapsed-container {
+.player-timer {
+	float: left;
+}
+
+.player-duration {
+	float: right;
+}
+
+.player-bar-container {
 	padding: 2px;
 	height: .625em;
-	background-color: #fff;
+	border: 1px solid #ccc;
 	border-radius: 5px;
-	width: 60%;
-	margin: 0 5%;
+	margin: 5px 0;
+	cursor: pointer;
 }
 
-.elapsed-bar {
-	background-color: #000;
+.player-bar {
+	background-color: #333;
 	border-radius: 5px;
 	width: 0;
+	max-width: 100%;
 	height: 100%;
 }
 
@@ -521,7 +574,7 @@ body {
 		top: 100%;
 		left: 0;
 		width: 100%;
-		background-color: #eee;
+		background-color: #fff;
 		border-top: 1px solid #ddd;
 		margin-top: -25em;
 	}
@@ -578,6 +631,17 @@ body {
 
 	.footer .logo {
 		margin-right: 2em;
+	}
+
+	.player-thumbnail {
+		display: block;
+		float: left;
+		width: 3em;
+		margin-right: 1em;
+	}
+
+	.player-info {
+		width: calc(100% - 50px - 8em);
 	}
 }
 

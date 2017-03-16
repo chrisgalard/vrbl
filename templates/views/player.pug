@@ -8,7 +8,7 @@ html
 		title= audio.name + ' | VRBL'
 		link(rel='shortcut icon', href='/favicon.ico?v=2', type='image/x-icon')
 
-		link(href='/styles/vendor.css', rel='stylesheet')
+		link(href='/styles/normalize.css', rel='stylesheet')
 		link(href='/styles/player.css', rel='stylesheet')
 	body
 		#player.player
@@ -41,6 +41,3 @@ html
 					img(alt='Send email', src='/images/email-icon.png')
 			h2 Embed Code
 			input.share-modal__embed-code(type='text' value='<iframe src="' + data.fullUrl + '" frameborder="0" scrolling="no" width="100%" height="450px"></iframe>')
-		script(src='https://w.soundcloud.com/player/api.js')
-		script(src='/js/audio-player.js')
-		script(src='/js/share-modal.js')

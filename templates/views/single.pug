@@ -22,22 +22,9 @@ block content
 				article.audio
 					.audio__image-container
 						img.audio__image(src=audio.image.url, width='300', height='300')
-					a.js-play.play-btn(href=audio.soundCloudURL) Play
+					a.js-play.play-btn(href=audio.soundCloudURL, data-title=audio.name, data-thumbnail=audio.image.url) Play
 					a.audio__info(href='/audios/' + audio.slug)
-						p.audio__author: span.highlighted= audio.author
+						p.audio__author= audio.author
 						h3.audio__title: span.highlighted= audio.name
 			else
 				.error-section There's no related content
-
-	#player.player.clearfix
-		.container
-			//- a#play.play-btn(href='#') Play
-			.player__timeline#timeline
-				.elapsed-number#elapsed-number 00:00
-				.elapsed-container#elapsed-container
-					.elapsed#elapsed-bar
-				.total#duration 00:00
-
-append js
-	script(src='https://w.soundcloud.com/player/api.js')
-	script(src='/js/audio-player.js')

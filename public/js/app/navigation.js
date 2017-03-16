@@ -1,5 +1,4 @@
-$(function () {
-
+define(['jquery'], function ($) {
 	var navigationBar = $('.js-navigation');
 	var navigationToggle = $('.js-navigation-toggle');
 
@@ -8,8 +7,6 @@ $(function () {
 
 	$(window).click(function (e) {
 		var target = $(e.target);
-
-		console.log(target, target.hasClass('js-navigation-toggle'));
 
 		if (target.hasClass('js-navigation-toggle')) {
 			e.preventDefault();
@@ -38,5 +35,4 @@ $(function () {
 			}
 		}, 250);
 	}
-
 });
