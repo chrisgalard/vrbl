@@ -10,6 +10,7 @@ define(['soundcloudApi', 'app/Player'], function (SC, Player) {
 		iframe.frameborder = '0';
 		iframe.scrolling = 'no';
 		iframe.style.visibility = 'hidden';
+		iframe.style.opacity = '0';
 		target.appendChild(iframe);
 		return SC.Widget(iframe);
 	}

@@ -77,7 +77,7 @@ define(['app/Timestamp', 'app/events'], function (Timestamp, bindCustomEvents) {
 		function render(target) {
 			var player = document.createElement('div');
 			player.id = 'player';
-			player.className = 'player is-visibl';
+			player.className = 'player';
 
 			player.innerHTML = [
 				'<div class="container">',

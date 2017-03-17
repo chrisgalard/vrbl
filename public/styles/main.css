@@ -258,9 +258,6 @@ body {
 /**
 	Single Audio
  */
-.single {
-	margin-top: 3.125em;
-}
 
 .single__content {
 	width: 100%;
@@ -321,6 +318,8 @@ body {
 	display: inline-block;
 	padding-left: 30px;
 	line-height: 24px;
+	color: #333;
+	background-size: contain;
 }
 
 .share a + a {
@@ -328,13 +327,11 @@ body {
 }
 
 .share__facebook {
-	color: #3c579e;
-	background: url('/images/share-icons/facebook-share-icon.png') no-repeat center left;
+	background: url('/images/facebook-icon.png') no-repeat center left;
 }
 
 .share__twitter {
-	color: #55acee;
-	background: url('/images/share-icons/twitter-share-icon.png') no-repeat center left;
+	background: url('/images/twitter-icon.png') no-repeat center left;
 }
 
 
