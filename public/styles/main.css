@@ -10,8 +10,9 @@ html, body {
 }
 
 body {
-	margin-top: 11em;
 	background-color: #eee;
+	margin-top: 154px; /* This is the navbar height */
+	padding-top: 1px; /* To avoid collapsing of top elements */
 }
 
 .container {
@@ -61,6 +62,7 @@ body {
 	margin-top: -20em;
 	margin-bottom: 1em;
 	transition: margin-top .3s;
+	border-bottom: 1px solid #ccc;
 }
 
 .navigation.is-visible {
@@ -177,15 +179,48 @@ body {
 
 
 /**
+	Top Selector (audios/shows)
+ */
+
+.top-selector {
+	margin: 2em 0;
+}
+
+.top-selector__option {
+	font-size: .875em;
+	padding: .5em 1.5em;
+	border: 1px solid #333;
+	text-decoration: none;
+	color: #333;
+	transition: background-color .3s;
+}
+
+.top-selector__option:hover {
+	background-color: #ddd;
+}
+
+.top-selector__option:first-child {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.top-selector__option:last-child {
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	margin-left: -1px;
+}
+
+.top-selector__option.is-selected {
+	background-color: #333;
+	color: #fff;
+}
+
+/**
 	Audios Sections
  */
 
-.audios {
+.audios:not(.featured-audios) {
 	margin-top: 70px;
-}
-
-.featured-audios {
-	margin-top: 1.5em;
 }
 
 .related-audios {
@@ -229,6 +264,7 @@ body {
 }
 
 .highlighted {
+	width: calc(100%); /* IE fix */
 	background-image: linear-gradient(transparent calc(100% - 6px), white 6px);
 	background-size: 0% 100%;
 	background-repeat: no-repeat;
@@ -258,6 +294,10 @@ body {
 /**
 	Single Audio
  */
+
+.single {
+	margin-top: 3em;
+}
 
 .single__content {
 	width: 100%;
@@ -297,6 +337,41 @@ body {
 
 
 /**
+	Show Page
+ */
+
+.show {
+	text-align: center;
+}
+
+.show-intro {
+	padding-top: 1em;
+	text-align: center;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+}
+
+.show-title {
+	font-size: 1.75em;
+	color: #333;
+	margin-bottom: 4em;
+}
+
+.show-cover {
+	max-width: 70%;
+	border: 4px solid #ccc;
+	border-radius: 3px;
+	margin-top: -5em;
+}
+
+.show-description {
+	margin-top: 1em;
+	color: #333;
+	line-height: 1.6;
+}
+
+
+/**
 	Error Sections
 */
 
@@ -304,7 +379,7 @@ body {
 	background-color: #ccc;
 	color: #bbb;
 	text-align: center;
-	line-height: 10em;
+	padding: 4em 0;
 	font-size: 2em;
 }
 
@@ -345,7 +420,7 @@ body {
 	width: 50px;
 	height: 50px;
 	text-indent: 100%;
-	overflow-x: hidden;
+	overflow: hidden;
 	border: 4px solid #fff;
 	border-radius: 100%;
 	transition: background-color .2s;
@@ -554,7 +629,7 @@ body {
 
 @media (min-width: 48.0625em) { /* 768px */
 	body {
-		margin-top: 7em;
+		margin-top: 88px;
 	}
 
 	.main-header {
@@ -628,6 +703,25 @@ body {
 
 	.footer .logo {
 		margin-right: 2em;
+	}
+
+	.show-intro {
+		padding-top: 2em;
+	}
+
+	.show-title {
+		font-size: 3em;
+		margin-bottom: 3em;
+	}
+
+	.show-cover {
+		max-width: 12em;
+		margin-top: -7em;
+	}
+
+	.show-description {
+		font-size: 1.25em;
+		font-weight: 300;
 	}
 
 	.player-thumbnail {

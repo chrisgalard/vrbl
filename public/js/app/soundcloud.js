@@ -99,6 +99,7 @@ define(['soundcloudApi', 'app/Player'], function (SC, Player) {
 			widget.pause();
 			this.hide();
 			activeButton.classList.remove('is-playing');
+			bottomPlayer.setState('paused');
 		});
 	}
 

@@ -3,6 +3,7 @@ var keystone = require('keystone');
 exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var Audio = keystone.list('Audio');
+	var Show = keystone.list('AudioShow');
 	var locals = res.locals;
 	var audioTypes = {};
 
@@ -25,6 +26,13 @@ exports = module.exports = function (req, res) {
 			audioTypes.favorites = results;
 			next(err);
 		})
+	});
+
+	view.on('init', function (next) {
+		Show.model.find(function (err, shows) {
+			res.locals.shows = shows;
+			next(err);
+		});
 	});
 
 	view.on('render', function (next) {

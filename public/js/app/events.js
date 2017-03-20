@@ -48,7 +48,6 @@ define(function () {
 			var targetIds = {
 				'play': customEvents.play,
 				'pause': customEvents.pause,
-				// 'progress-container': customEvents.seek,
 				'close': customEvents.close
 			};
 
@@ -61,14 +60,11 @@ define(function () {
 			this.DOMElement.addEventListener(event, callback.bind(this));
 		};
 
-		var that = this;
-
 		// Internal handlers
-		// this.on('play', this.setState.bind(null, 'playing'));
 		this.on('play', function () {
 			that.setState('playing');
 		});
-		// this.on('pause', this.setState.bind(null, 'paused'));
+		
 		this.on('pause', function () {
 			that.setState('paused');
 		});

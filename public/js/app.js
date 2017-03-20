@@ -11,6 +11,6 @@ require.config({
 	}
 });
 
-require(['app/navigation', 'app/soundcloud'], function () {
+require(['app/navigation', 'app/top-selector', 'app/soundcloud'], function () {
 	console.log('All dependencies have been loaded');
 });

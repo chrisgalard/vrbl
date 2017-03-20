@@ -12,8 +12,8 @@ var vrblStorage = new keystone.Storage({
 		url: true,
 	},
 	fs: {
-		path: keystone.expandPath('./public/images/audios'),
-		publicPath: '/images/audios/',
+		path: keystone.expandPath('./public/images/shows'),
+		publicPath: '/images/shows/',
 	},
 });
 
@@ -40,6 +40,7 @@ Audio.add({
 	publisher: { type: Types.Relationship, ref: 'User' },
 	categories: { type: Types.Relationship, ref: 'AudioCategory', many: true },
 	type: { type: Types.Select, options: 'featured, trending, favorites', default: 'featured' },
+	shows: { type: Types.Relationship, ref: 'AudioShow', many: true },
 });
 
 Audio.schema.virtual('content.full').get(function () {

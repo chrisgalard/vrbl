@@ -42,6 +42,7 @@ exports = module.exports = function (app) {
 	app.get('/categories/:category', routes.views.category);
 	app.get('/pages/:page', routes.views.page);
 	app.get('/audios/:audio', routes.views.single);
+	app.get('/shows/:show', routes.views.show)
 	app.get('/player/:audio', routes.views.player);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

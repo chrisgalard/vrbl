@@ -51,7 +51,6 @@ define(['app/Timestamp', 'app/events'], function (Timestamp, bindCustomEvents) {
 		this.setProgress = function (position) {
 			var progressElement = document.getElementById('progress');
 			progressElement.style.width = position + '%';
-			// progressElement.style.width = position * 100 / this.duration + '%';
 		};
 
 		this.setDuration = function (duration) {

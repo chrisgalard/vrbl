@@ -37,7 +37,7 @@ keystone.init({
 		relative_urls: false,
 		extended_valid_elements: 'iframe[src|frameborder|scrolling|width|height]',
 		external_plugins: {
-			'embediframe': '/js/tinymce-custom-buttons.js',
+			'embediframe': '/js/app/tinymce-custom-buttons.js',
 		}
 	},
 });
@@ -60,10 +60,8 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	audios: ['audios', 'audio-categories'],
-	users: 'users'
+	audios: ['audios', 'audio-categories', 'audio-shows'],
+	general: ['pages', 'sidebars', 'users'],
 });
-
-// Start Keystone to connect to your database and initialise the web server
 
 keystone.start();
