@@ -11,19 +11,13 @@ html
 		link(href='/styles/normalize.css', rel='stylesheet')
 		link(href='/styles/player.css', rel='stylesheet')
 	body
-		#player.player
-			img.player__image(src=audio.image.url)
-			.player__image-overlay
-			a.js-play.play-btn(href=audio.soundCloudURL) Play
-			.player__actions.clearfix
-				a.download(href='#')
-				a#share.share(href='#')
-			.timeline#timeline
-				.elapsed-container#elapsed-container
-					.elapsed#elapsed-bar
-				#elapsed-number.elapsed-number 00:00
-				#duration.total 00:00
-		#share-modal.share-modal
+		.player-box.js-player-box
+			img.audio-image(src=audio.image.url)
+			.audio-image-overlay
+			a.js-play.play-btn(href=audio.soundCloudURL, data-title=audio.name, data-thumbnail=audio.image.url) Play
+			a#share.share(href='#')
+
+		.share-modal.js-share-modal
 			h2 Share
 			ul.share-buttons
 				- var description = encodeURI(audio.name);
@@ -41,3 +35,5 @@ html
 					img(alt='Send email', src='/images/email-icon.png')
 			h2 Embed Code
 			input.share-modal__embed-code(type='text' value='<iframe src="' + data.fullUrl + '" frameborder="0" scrolling="no" width="100%" height="450px"></iframe>')
+
+		script(data-main='/js/single-player.js' src='/js/require.js')

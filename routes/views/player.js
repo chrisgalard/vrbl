@@ -6,9 +6,9 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	view.on('init', function (next) {
-		Audio.model.findOne({slug: req.params.audio}, function (err, results) {
+		Audio.model.findOne({slug: req.params.audio}, function (err, audio) {
 			if (err) return next(err);
-			locals.audio = results;
+			locals.audio = audio;
 			next();
 		});
 	});
