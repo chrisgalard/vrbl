@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-	background-color: #eee;
+	background-color: #f1f3f2;
 	margin-top: 154px; /* This is the navbar height */
 	padding-top: 1px; /* To avoid collapsing of top elements */
 }
@@ -219,8 +219,12 @@ body {
 	Audios Sections
  */
 
-.audios:not(.featured-audios) {
-	margin-top: 70px;
+.audios {
+	margin-top: 4.375em;
+}
+
+.featured-audios {
+	margin-top: 1em;
 }
 
 .related-audios {
@@ -244,26 +248,36 @@ body {
 	height: auto;
 }
 
-.audio__info {
+.audio__link {
 	position: absolute;
-	padding: 1em;
 	width: 100%;
-	bottom: 0;
+	height: 100%;
+	top: 0;
 	left: 0;
 	text-decoration: none;
 	color: #fff;
 }
 
+.audio__info {
+	position: absolute;
+	padding: 1em;
+	bottom: 0;
+}
+
 .audio__author,
-.highlighted {
+.highlighted--dark {
 	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.highlighted--light {
+	background-color: rgba(255, 255, 255, 0.8);
 }
 
 .audio__author {
 	display: inline-block;
 }
 
-.highlighted {
+.highlighted--dark {
 	width: calc(100%); /* IE fix */
 	background-image: linear-gradient(transparent calc(100% - 6px), white 6px);
 	background-size: 0% 100%;
@@ -313,6 +327,7 @@ body {
 .single__title {
 	margin-top: 0;
 	margin-bottom: 0;
+	line-height: 1.45;
 }
 
 .single__author {
@@ -419,8 +434,11 @@ body {
 	position: relative;
 	width: 50px;
 	height: 50px;
-	text-indent: 100%;
-	overflow: hidden;
+	text-indent: 55px;
+	line-height: 42px;
+	color: #fff;
+	font-size: .8em;
+	text-decoration: none;
 	border: 4px solid #fff;
 	border-radius: 100%;
 	transition: background-color .2s;
@@ -544,6 +562,8 @@ body {
 	margin-right: 1em;
 	border-color: #333;
 	border-width: 3px;
+	text-indent: 100%;
+	overflow: hidden;
 }
 
 .player .play-btn:before {
@@ -613,7 +633,7 @@ body {
 	Reponsive Styles
  */
 
-@media (max-width: 60em) {
+@media (max-width: 60em) { /* 960px */
 	.footer .menu-list {
 		margin-top: 2em;
 	}
@@ -681,7 +701,8 @@ body {
 	}
 
 	.navigation a:hover {
-		background-color: #e0e0e0;
+		background-color: #333;
+		color: #fff;
 	}
 
 	.navigation-toggle {
@@ -734,6 +755,13 @@ body {
 	.player-info {
 		width: calc(100% - 50px - 8em);
 	}
+
+	.embedded-player-paragraph {
+		float: left;
+		width: 50%;
+		margin-right: 1.5em;
+		margin-bottom: 0;
+	}
 }
 
 @media (min-width: 60.0625em) { /* 960px */
@@ -772,7 +800,7 @@ body {
 		height: auto;
 	}
 
-	.audio__info:hover .highlighted {
+	.audio__link:hover .highlighted--dark {
 		background-color: rgba(0, 0, 0, 1);
 		background-size: 100% 100%;
 	}

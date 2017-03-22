@@ -15,9 +15,10 @@ block content
 				article.audio
 					.audio__image-container
 						img.audio__image(src=audio.image.url, width='300', height='300')
-					a.js-play.play-btn(href=audio.soundCloudURL, data-title=audio.name, data-thumbnail=audio.image.url) Play
-					a.audio__info(href='/audios/' + audio.slug)
-						p.audio__author= audio.author
-						h3.audio__title: span.highlighted= audio.name
+					a.audio__link(href='/audios/' + audio.slug)
+						.audio__info
+							p.audio__author= audio.author
+							h3.audio__title: span.highlighted--dark= audio.name
+					a.js-play.play-btn(href=audio.soundCloudURL, data-title=audio.name, data-thumbnail=audio.image.url) Listen
 			else
 				.error-section Please add #{key} audios to the database

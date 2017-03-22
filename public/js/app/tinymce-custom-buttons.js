@@ -11,14 +11,14 @@
 		function insertAudio() {
 			var selectedText = editor.selection.getContent({format: 'text'});
 			console.log(selectedText);
-			var iframe = '<iframe frameborder="0"  scrolling="no" width="100%"  height="450px" src="/player/' + selectedText + '"></iframe>';
+			var iframe = '<iframe frameborder="0"  scrolling="no" width="100%"  height="400px" src="/player/' + selectedText + '"></iframe>';
 
 			if (selectedText.length === 0) {
 				alert('Please select some text!');
 				return;
 			}
 
-			editor.insertContent(iframe);
+			editor.insertContent('<p class="embedded-player-paragraph">' + iframe + '</p>');
 		}
 	});
 

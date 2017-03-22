@@ -36,6 +36,7 @@ define(['soundcloudApi', 'app/Player'], function (SC, Player) {
 
 				if (newSoundCloudURL !== soundCloudURL) {
 					widget.pause();
+					widget.seekTo(0);
 					bottomPlayer.setProgress(0);
 					bottomPlayer.setTimer(0);
 					bottomPlayer.setState('loading');
@@ -46,11 +47,10 @@ define(['soundcloudApi', 'app/Player'], function (SC, Player) {
 						activeButton.classList.remove('is-playing');
 
 					loadNewTrack(newSoundCloudURL, function () {
+						widget.play();
+						that.classList.add('is-playing');
 						widget.getDuration(function (duration) {
 							bottomPlayer.setDuration(duration);
-							bottomPlayer.setState('playing');
-							widget.play();
-							that.classList.add('is-playing');
 						});
 					});
 
@@ -62,7 +62,7 @@ define(['soundcloudApi', 'app/Player'], function (SC, Player) {
 						bottomPlayer.setState('playing');
 					}
 
-					that.classList.toggle('is-playing');
+					this.classList.toggle('is-playing');
 					widget.toggle();
 				}
 
@@ -71,6 +71,10 @@ define(['soundcloudApi', 'app/Player'], function (SC, Player) {
 		}
 
 		widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (data) {
+			if (data.currentPosition > 250 && bottomPlayer.state === 'loading') {
+				bottomPlayer.setState('playing');
+			}
+
 			bottomPlayer.position = data.currentPosition;
 			bottomPlayer.setProgress(data.currentPosition * 100 / bottomPlayer.duration);
 			bottomPlayer.setTimer(data.currentPosition);
