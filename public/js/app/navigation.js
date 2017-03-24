@@ -18,6 +18,11 @@ define(['jquery'], function ($) {
 		}
 	});
 
+	navigationBar.hover(null, function (e) {
+		navigationBar.removeClass('is-visible');
+		navigationToggle.removeClass('is-toggled');
+	});
+
 	if ($(window).width() < 768) {
 		$(window).scroll(function () {
 			didScroll = true;
